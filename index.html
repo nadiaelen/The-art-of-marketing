@@ -21,8 +21,9 @@
     </div>
     <nav class="nav">
       <a href="#gallery">Gallery</a>
-      <a href="#submit">Submit</a>
       <a href="#awards">Awards</a>
+      <a href="#partners">Partners</a>
+      <a href="#team">Team</a>
       <a href="#jury">Jury</a>
       <a href="#rules">Rules</a>
     </nav>
@@ -32,14 +33,21 @@
   <main>
     <section class="hero">
       <div class="hero-copy">
-        <div class="pill">University of Nevada, Las Vegas</div>
-        <p class="quote">“An exhibition becomes memorable when the work, the audience, and the moment meet in one experience.”</p>
-        <h1>An inviting exhibition space for student work, built like a creative repository.</h1>
-        <p class="lede">This hybrid UNLV version keeps the exhibition polished and institutional while using immersive contrast, warm desert colors, and a gallery-first layout that feels active, contemporary, and student-centered.</p>
-        <div class="actions">
-          <button class="btn btn-primary">New submission</button>
-          <button class="btn btn-secondary">Explore gallery</button>
+        <div class="hero-intro">
+          <div class="pill">UNLV · Faculty of Marketing</div>
+          <p class="quote">“An exhibition becomes memorable when the work, the audience, and the moment meet in one experience.”</p>
         </div>
+
+        <h1>Discover the gallery of works.</h1>
+        <p class="lede">
+          A warm, Nevada-inspired exhibition site for student submissions, awards, jurors, and public gallery browsing.
+        </p>
+
+        <div class="actions">
+          <button class="btn btn-primary">Explore gallery</button>
+          <button class="btn btn-secondary">Submit a work</button>
+        </div>
+
         <div class="stats">
           <div><span>Works submitted</span><strong>128</strong></div>
           <div><span>Categories</span><strong>4</strong></div>
@@ -48,39 +56,60 @@
         </div>
       </div>
 
-      <aside class="submit-card">
-        <h2>Submit a work</h2>
-        <p>Upload a picture, title, and description.</p>
-        <form class="form">
-          <input type="text" placeholder="Title of your work" />
-          <div class="grid-2">
-            <input type="text" placeholder="Student name" />
-            <input type="text" placeholder="Major / program" />
-          </div>
-          <select>
-            <option>Traditional Visual Art</option>
-            <option>Digital Art</option>
-            <option>Photography / Collage</option>
-            <option>Literary Expression</option>
-          </select>
-          <textarea placeholder="Write a short description of the concept, process, and message..."></textarea>
-          <div class="dropzone">Drag and drop image files here<br><small>PNG, JPG, TIFF, or PDF. A backend upload can be connected later.</small></div>
-          <button class="btn btn-primary full">Publish submission</button>
-        </form>
+      <aside class="hero-panel">
+        <div class="hero-panel-card">
+          <h2>About the exhibition</h2>
+          <p>
+            The UNLV Marketing Creative Exhibition showcases creative work in visual art, digital art, photography,
+            collage, and literary expression.
+          </p>
+        </div>
+        <div class="hero-panel-card soft">
+          <h3>Exhibition values</h3>
+          <ul>
+            <li>Creativity</li>
+            <li>Excellence</li>
+            <li>Authenticity</li>
+            <li>Artistic expression</li>
+          </ul>
+        </div>
       </aside>
     </section>
 
-    <section class="card-grid">
-      <article class="category-card"><h3>Traditional Visual Art</h3><p>Drawing, painting, illustration, mixed media</p><a href="#gallery">Explore →</a></article>
-      <article class="category-card"><h3>Digital Art</h3><p>Digital illustration, design, new visual media</p><a href="#gallery">Explore →</a></article>
-      <article class="category-card"><h3>Photography / Collage</h3><p>Artistic photographs and visual compositions</p><a href="#gallery">Explore →</a></article>
-      <article class="category-card"><h3>Literary Expression</h3><p>Poetry, short prose, micro-essay, narrative forms</p><a href="#gallery">Explore →</a></article>
+    <section class="card-grid" id="gallery">
+      <article class="category-card">
+        <div class="category-icon">01</div>
+        <h3>Traditional Visual Art</h3>
+        <p>Drawing, painting, illustration, and other traditional forms.</p>
+        <a href="#gallery-feed">Explore →</a>
+      </article>
+      <article class="category-card">
+        <div class="category-icon">02</div>
+        <h3>Digital Art</h3>
+        <p>Digital illustration, design, and modern visual creation.</p>
+        <a href="#gallery-feed">Explore →</a>
+      </article>
+      <article class="category-card">
+        <div class="category-icon">03</div>
+        <h3>Photography / Collage</h3>
+        <p>Photographic art and visual compositions through collage.</p>
+        <a href="#gallery-feed">Explore →</a>
+      </article>
+      <article class="category-card">
+        <div class="category-icon">04</div>
+        <h3>Literary Expression</h3>
+        <p>Poetry, prose, micro-essay, and other literary forms.</p>
+        <a href="#gallery-feed">Explore →</a>
+      </article>
     </section>
 
-    <section class="content-grid" id="gallery">
+    <section class="content-grid" id="gallery-feed">
       <div class="panel">
         <div class="panel-head">
-          <div><h2>Submission gallery</h2><p>Search and filter entries like a creative repository.</p></div>
+          <div>
+            <h2>Gallery of works</h2>
+            <p>Browse entries like a public exhibition feed.</p>
+          </div>
           <span class="badge">All categories</span>
         </div>
         <div class="filters">
@@ -98,17 +127,7 @@
 
       <aside class="sidecol">
         <div class="mini-panel" id="awards">
-          <h3>Inviting and experiential</h3>
-          <ul>
-            <li>Warm neutral surfaces with Nevada desert accents.</li>
-            <li>Official structure with an exhibition-forward feel.</li>
-            <li>Clear paths for submit, browse, and review.</li>
-            <li>Built to be polished, student-friendly, and visual.</li>
-          </ul>
-        </div>
-
-        <div class="mini-panel">
-          <h3>Awards</h3>
+          <h3>Awards & recognition</h3>
           <div class="award-list">
             <div><strong>Grand Prize</strong><span>Best overall work</span></div>
             <div><strong>Traditional Technique</strong><span>Best classic visual work</span></div>
@@ -119,13 +138,28 @@
           </div>
         </div>
 
+        <div class="mini-panel" id="partners">
+          <h3>Partners</h3>
+          <p>Supported by collaborators who invest in student creativity and professional growth.</p>
+        </div>
+
+        <div class="mini-panel" id="team">
+          <h3>Organizing team</h3>
+          <ul>
+            <li>Project Manager</li>
+            <li>Partnerships & Communication</li>
+            <li>Operations</li>
+            <li>Web Development</li>
+          </ul>
+        </div>
+
         <div class="mini-panel" id="jury">
           <h3>Jury evaluation</h3>
           <div class="criteria"><span>Originality</span><b>30%</b></div>
           <div class="criteria"><span>Conceptual coherence</span><b>25%</b></div>
           <div class="criteria"><span>Technical quality</span><b>25%</b></div>
           <div class="criteria"><span>Impact and relevance</span><b>20%</b></div>
-          <p class="note">Jury decisions are final, and evaluations are completed independently.</p>
+          <p class="note">Jury decisions are final and scores are entered independently.</p>
         </div>
       </aside>
     </section>
@@ -143,10 +177,10 @@
       <div class="panel dark">
         <h2>Site flow</h2>
         <div class="flow">
-          <div><span>1</span><div><strong>Hero + quote</strong><p>Set the emotional tone immediately.</p></div></div>
-          <div><span>2</span><div><strong>Category cards</strong><p>Let visitors explore by category first.</p></div></div>
-          <div><span>3</span><div><strong>Gallery feed</strong><p>Display entries like a project repository.</p></div></div>
-          <div><span>4</span><div><strong>Awards + jury + rules</strong><p>Keep the institutional pieces visible and easy to find.</p></div></div>
+          <div><span>1</span><div><strong>Hero + quote</strong><p>Warm, editorial introduction instead of a black tile.</p></div></div>
+          <div><span>2</span><div><strong>Category cards</strong><p>Direct entry into the exhibition sections.</p></div></div>
+          <div><span>3</span><div><strong>Gallery feed</strong><p>Public submission browsing and likes.</p></div></div>
+          <div><span>4</span><div><strong>Awards + team + jury</strong><p>Visible institutional structure like the reference site.</p></div></div>
         </div>
       </div>
     </section>
