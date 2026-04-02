@@ -1,17 +1,22 @@
-# UNLV Marketing Creative Exhibition
+# Nevada Palette Pack
 
-GitHub Pages-ready static prototype.
+This package includes three Nevada-inspired color palettes and a ready-to-upload GitHub Pages site.
 
-## Includes
-- immersive UNLV-style hero
-- category cards
-- searchable submission gallery
-- awards, jury, and rules sections
+## Files
+- `index.html`
+- `styles.css` (Desert Dawn, recommended)
+- `styles-red-rock.css`
+- `styles-nevada-dusk.css`
+- `script.js`
+- `README.md`
 
-## Run
-Open `index.html` in a browser.
+## How to use
+1. Upload the files to your GitHub repo root.
+2. Keep `styles.css` as the active stylesheet.
+3. If you want a different palette, rename one of the alternate CSS files to `styles.css` before committing.
+4. Re-deploy GitHub Pages.
 
-## Publish on GitHub Pages
-1. Create a repo.
-2. Upload these files to the root.
-3. Enable GitHub Pages in repo settings.
+## Palette options
+- Desert Dawn
+- Red Rock Canyon
+- Nevada Dusk
