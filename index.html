@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UNLV Marketing Creative Exhibition</title>
+  <meta name="description" content="UNLV Marketing Creative Exhibition submission hub" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">U</div>
+      <div>
+        <div class="brand-title">UNLV Marketing Creative Exhibition</div>
+        <div class="brand-subtitle">Expressions & Forms · Marketing and Art</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#gallery">Gallery</a>
+      <a href="#submit">Submit</a>
+      <a href="#awards">Awards</a>
+      <a href="#jury">Jury</a>
+      <a href="#rules">Rules</a>
+    </nav>
+    <button class="btn btn-primary">Submit work</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="pill">University of Nevada, Las Vegas</div>
+        <p class="quote">“An exhibition becomes memorable when the work, the audience, and the moment meet in one experience.”</p>
+        <h1>An inviting exhibition space for student work, built like a creative repository.</h1>
+        <p class="lede">This hybrid UNLV version keeps the exhibition polished and institutional while using immersive contrast, warm red accents, and a gallery-first layout that feels active, contemporary, and student-centered.</p>
+        <div class="actions">
+          <button class="btn btn-primary">New submission</button>
+          <button class="btn btn-secondary">Explore gallery</button>
+        </div>
+        <div class="stats">
+          <div><span>Works submitted</span><strong>128</strong></div>
+          <div><span>Categories</span><strong>4</strong></div>
+          <div><span>Jurors</span><strong>4</strong></div>
+          <div><span>Awards</span><strong>6</strong></div>
+        </div>
+      </div>
+
+      <aside class="submit-card">
+        <h2>Submit a work</h2>
+        <p>Upload a picture, title, and description.</p>
+        <form class="form">
+          <input type="text" placeholder="Title of your work" />
+          <div class="grid-2">
+            <input type="text" placeholder="Student name" />
+            <input type="text" placeholder="Major / program" />
+          </div>
+          <select>
+            <option>Traditional Visual Art</option>
+            <option>Digital Art</option>
+            <option>Photography / Collage</option>
+            <option>Literary Expression</option>
+          </select>
+          <textarea placeholder="Write a short description of the concept, process, and message..."></textarea>
+          <div class="dropzone">Drag and drop image files here<br><small>PNG, JPG, TIFF, or PDF. A backend upload can be connected later.</small></div>
+          <button class="btn btn-primary full">Publish submission</button>
+        </form>
+      </aside>
+    </section>
+
+    <section class="card-grid">
+      <article class="category-card"><h3>Traditional Visual Art</h3><p>Drawing, painting, illustration, mixed media</p><a href="#gallery">Explore →</a></article>
+      <article class="category-card"><h3>Digital Art</h3><p>Digital illustration, design, new visual media</p><a href="#gallery">Explore →</a></article>
+      <article class="category-card"><h3>Photography / Collage</h3><p>Artistic photographs and visual compositions</p><a href="#gallery">Explore →</a></article>
+      <article class="category-card"><h3>Literary Expression</h3><p>Poetry, short prose, micro-essay, narrative forms</p><a href="#gallery">Explore →</a></article>
+    </section>
+
+    <section class="content-grid" id="gallery">
+      <div class="panel">
+        <div class="panel-head">
+          <div><h2>Submission gallery</h2><p>Search and filter entries like a creative repository.</p></div>
+          <span class="badge">All categories</span>
+        </div>
+        <div class="filters">
+          <input id="search" type="search" placeholder="Search titles, students, concepts..." />
+          <select id="categoryFilter">
+            <option>All</option>
+            <option>Traditional Visual Art</option>
+            <option>Digital Art</option>
+            <option>Photography / Collage</option>
+            <option>Literary Expression</option>
+          </select>
+        </div>
+        <div id="galleryGrid" class="gallery"></div>
+      </div>
+
+      <aside class="sidecol">
+        <div class="mini-panel" id="awards">
+          <h3>Inviting and experiential</h3>
+          <ul>
+            <li>Warm neutral surfaces with UNLV scarlet accents.</li>
+            <li>Official structure with an exhibition-forward feel.</li>
+            <li>Clear paths for submit, browse, and review.</li>
+            <li>Built to be polished, student-friendly, and visual.</li>
+          </ul>
+        </div>
+
+        <div class="mini-panel">
+          <h3>Awards</h3>
+          <div class="award-list">
+            <div><strong>Grand Prize</strong><span>Best overall work</span></div>
+            <div><strong>Traditional Technique</strong><span>Best classic visual work</span></div>
+            <div><strong>Digital Illustration</strong><span>Best digital visual work</span></div>
+            <div><strong>Photography</strong><span>Best photo / collage</span></div>
+            <div><strong>Creative Expression</strong><span>Best literary work</span></div>
+            <div><strong>Popularity Award</strong><span>Audience vote</span></div>
+          </div>
+        </div>
+
+        <div class="mini-panel" id="jury">
+          <h3>Jury evaluation</h3>
+          <div class="criteria"><span>Originality</span><b>30%</b></div>
+          <div class="criteria"><span>Conceptual coherence</span><b>25%</b></div>
+          <div class="criteria"><span>Technical quality</span><b>25%</b></div>
+          <div class="criteria"><span>Impact and relevance</span><b>20%</b></div>
+          <p class="note">Jury decisions are final, and evaluations are completed independently.</p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="content-grid rules-row" id="rules">
+      <div class="panel">
+        <h2>Submission rules</h2>
+        <div class="rules-grid">
+          <div><strong>Original work only</strong><span>No plagiarism or unauthorized reuse</span></div>
+          <div><strong>Max two submissions</strong><span>One student, up to two works</span></div>
+          <div><strong>Anonymous writing</strong><span>For fair literary evaluation</span></div>
+          <div><strong>Technical quality</strong><span>300 dpi for digital works</span></div>
+        </div>
+      </div>
+      <div class="panel dark">
+        <h2>Site flow</h2>
+        <div class="flow">
+          <div><span>1</span><div><strong>Hero + quote</strong><p>Set the emotional tone immediately.</p></div></div>
+          <div><span>2</span><div><strong>Category cards</strong><p>Let visitors explore by category first.</p></div></div>
+          <div><span>3</span><div><strong>Gallery feed</strong><p>Display entries like a project repository.</p></div></div>
+          <div><span>4</span><div><strong>Awards + jury + rules</strong><p>Keep the institutional pieces visible and easy to find.</p></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
