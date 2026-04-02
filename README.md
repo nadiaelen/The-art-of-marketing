@@ -1,14 +1,20 @@
-# UNLV Exhibition Part One
+# UNLV Exhibition Update v2
 
-This version focuses on the public homepage structure and uses a warm Nevada-inspired palette.
-It removes the dark intro tile and follows a more exhibition-like flow.
+This package updates the public website with:
+- Lee Business School wording
+- a cleaner hero
+- a better About tile
+- document links for rules and jury guide
+- featured works
+- most liked works
+- improved alignment and spacing
 
 ## Files
 - `index.html`
 - `styles.css`
 - `script.js`
 - `README.md`
+- `docs/UNLV_Official_Regulations_FORMATTED.docx`
+- `docs/UNLV_Jury_Guide_FORMATTED.docx`
 
-## Notes
-This is the public homepage only.
-Juror login / Google Forms / scoring automation will come in part two.
+Upload these files to replace the current GitHub Pages site.
