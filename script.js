@@ -13,27 +13,46 @@ const data = await res.json();
 
 ```
 submissions = data.map(item => ({
-  title: item["Title of your work"] || "Untitled",
-  student: item["Student name"] || "Anonymous",
-  major: item["Major / program"] || "",
-  category: item["Category"] || "Other",
-  description: item["Description"] || "",
-  image: item["Upload"] || ""
+  title: item["Artwork Title"],
+  student: item["Student Name (First and Last)"],
+  major: item["Major / Program of Study"],
+  category: item["Submission Category"],
+  description: item["Artwork Description (Provide details on medium, dimensions, theme, and inspiration - max 200 words)"],
+  image: item["Upload Artwork File"],
+  status: "Submitted",
+  likes: 0
 }));
 
 render(submissions);
 ```
 
 } catch (err) {
-gallery.innerHTML = "<p>Failed to load submissions.</p>";
+gallery.innerHTML = "<p>Could not load submissions.</p>";
 console.error(err);
 }
 }
 
 function render(items) {
-gallery.innerHTML = items.map(item => `    <article class="gallery-item">
-      ${item.image ?`<img src="${item.image}" style="width:100%; border-radius:12px; margin-bottom:10px;">`: ""}       <h3>${item.title}</h3>       <p>${item.student} • ${item.major}</p>       <p>${item.description}</p>       <span class="tag">${item.category}</span>     </article>
- `).join('');
+if (!items.length) {
+gallery.innerHTML = "<p>No submissions yet.</p>";
+return;
+}
+
+gallery.innerHTML = items.map(item => ` <article class="gallery-item"> <div class="head"> <div> <div class="tags"> <span class="tag">${item.category || "General"}</span> <span class="tag alt">${item.status}</span> </div> <h3>${item.title || "Untitled"}</h3> <p>${item.student || "Anonymous"} • ${item.major || ""}</p> </div> <div class="badge">${item.likes} likes</div> </div>
+
+```
+  ${item.image ? `<img src="${item.image}" style="width:100%; border-radius:12px; margin:10px 0;">` : ""}
+
+  <p>${item.description || ""}</p>
+
+  <div class="footer">
+    <span>Live submission</span>
+    <strong>View</strong>
+  </div>
+</article>
+```
+
+`).join('');
 }
 
 function applyFilters() {
@@ -41,10 +60,8 @@ const q = search.value.toLowerCase();
 const cat = filter.value;
 
 const results = submissions.filter(item => {
-return (
-(!q || item.title.toLowerCase().includes(q)) &&
-(cat === "All" || item.category === cat)
-);
+const text = `${item.title} ${item.student} ${item.major} ${item.category} ${item.description}`.toLowerCase();
+return (!q || text.includes(q)) && (cat === 'All' || item.category === cat);
 });
 
 render(results);
