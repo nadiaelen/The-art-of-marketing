@@ -10,13 +10,16 @@ const SHEET_CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export
 //  Column A is always "Timestamp" (added automatically by Google Forms)
 // ============================================================
 const COL = {
-  timestamp:   0,  // A — Timestamp (auto)
-  title:       1,  // B — Title of your work
-  student:     2,  // C — Student name
-  major:       3,  // D — Major / program
-  category:    4,  // E — Category
-  description: 5,  // F — Description
-  imageUrl:    6,  // G — Image URL (if your form collects a public image link)
+  timestamp:   0,  // A — Timestamp
+  email:       1,  // B — Email Address
+  student:     2,  // C — Student Name (First and Last)
+  unlvEmail:   3,  // D — UNLV Email Address
+  major:       4,  // E — Major / Program of Study
+  year:        5,  // F — Current Year of Study
+  title:       6,  // G — Artwork Title
+  category:    7,  // H — Submission Category
+  description: 8,  // I — Artwork Description
+  imageUrl:    9,  // J — Upload Artwork File
 };
 
 // ============================================================
@@ -115,7 +118,7 @@ function render(items) {
 
   galleryGrid.innerHTML = items.map(item => `
     <article class="gallery-item">
-      ${item.imageUrl ? `<div class="gallery-img"><img src="${escHtml(item.imageUrl)}" alt="${escHtml(item.title)}" loading="lazy" onerror="this.parentElement.style.display='none'"></div>` : ''}
+      ${item.imageUrl ? `<div class="gallery-img"><img src="${escHtml(driveUrl(item.imageUrl))}" alt="${escHtml(item.title)}" loading="lazy" onerror="this.parentElement.style.display='none'"></div>` : ''}
       <div class="head">
         <div>
           <div class="tags">
@@ -173,6 +176,14 @@ categorySelect.addEventListener('change', applyFilters);
 // ============================================================
 //  HELPERS
 // ============================================================
+// Converts Google Drive share links to direct displayable image URLs
+function driveUrl(url) {
+  if (!url) return '';
+  const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
+  if (match) return `https://drive.google.com/thumbnail?id=${match[1]}&sz=w600`;
+  return url;
+}
+
 function escHtml(str) {
   return String(str)
     .replace(/&/g, '&amp;')
