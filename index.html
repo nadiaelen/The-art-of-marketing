@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UNLV Marketing Creative Exhibition</title>
+  <meta name="description" content="UNLV Marketing Creative Exhibition submission hub" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">U</div>
+      <div>
+        <div class="brand-title">UNLV Marketing Creative Exhibition</div>
+        <div class="brand-subtitle">Lee Business School · Marketing and International Business</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#gallery">Gallery</a>
+      <a href="#featured">Featured</a>
+      <a href="#liked">Most liked</a>
+      <a href="#awards">Awards</a>
+      <a href="#jury">Jury</a>
+      <a href="#rules">Rules</a>
+      <a href="#documents">Documents</a>
+    </nav>
+    <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdo7EoAzDfIxP4ctCnspSz_6W6DMtB1YJU7FF7h031DH9hiWA/viewform?usp=header" target="_blank" rel="noopener">Submit work</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="hero-intro">
+          <div class="pill">UNLV · Lee Business School</div>
+          <p class="quote">"Are we creative in marketing? We are."</p>
+        </div>
+
+        <h1>UNLV Marketing Creative Exhibition</h1>
+        <p class="lede">Discover the Gallery.</p>
+        <p class="supporting-copy">
+          A student-centered exhibition platform for creative marketing expression, public visibility, and portfolio growth.
+        </p>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="#gallery-feed">Explore gallery</a>
+          <a class="btn btn-secondary" href="https://docs.google.com/forms/d/e/1FAIpQLSdo7EoAzDfIxP4ctCnspSz_6W6DMtB1YJU7FF7h031DH9hiWA/viewform?usp=header" target="_blank" rel="noopener">Submit a work</a>
+        </div>
+
+        <div class="stats">
+          <div><span>Works submitted</span><strong id="statCount">–</strong></div>
+          <div><span>Categories</span><strong>4</strong></div>
+          <div><span>Jurors</span><strong>4</strong></div>
+          <div><span>Awards</span><strong>6</strong></div>
+        </div>
+      </div>
+
+      <aside class="hero-panel">
+        <div class="hero-panel-card about-card">
+          <h2>About the exhibition</h2>
+          <p>
+            At UNLV Lee Business School, marketing is both strategy and creativity. This exhibition gives students a place
+            to build portfolios, tell brand stories, test visual ideas, and present work with professional polish.
+          </p>
+          <ul>
+            <li>Strengthen your portfolio</li>
+            <li>Show your creative voice</li>
+            <li>Practice brand storytelling</li>
+            <li>Gain public exposure and feedback</li>
+          </ul>
+        </div>
+        <div class="hero-panel-card soft">
+          <h3>Exhibition values</h3>
+          <ul>
+            <li>Creativity</li>
+            <li>Excellence</li>
+            <li>Authenticity</li>
+            <li>Artistic expression</li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+    <section class="card-grid" id="gallery">
+      <article class="category-card">
+        <div class="category-icon">01</div>
+        <h3>Traditional Visual Art</h3>
+        <p>Drawing, painting, illustration, and other traditional forms.</p>
+        <a href="#gallery-feed">Explore →</a>
+      </article>
+      <article class="category-card">
+        <div class="category-icon">02</div>
+        <h3>Digital Art</h3>
+        <p>Digital illustration, design, and modern visual creation.</p>
+        <a href="#gallery-feed">Explore →</a>
+      </article>
+      <article class="category-card">
+        <div class="category-icon">03</div>
+        <h3>Photography / Collage</h3>
+        <p>Photographic art and visual compositions through collage.</p>
+        <a href="#gallery-feed">Explore →</a>
+      </article>
+      <article class="category-card">
+        <div class="category-icon">04</div>
+        <h3>Literary Expression</h3>
+        <p>Poetry, prose, micro-essay, and other literary forms.</p>
+        <a href="#gallery-feed">Explore →</a>
+      </article>
+    </section>
+
+    <section class="content-grid" id="gallery-feed">
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Gallery of works</h2>
+            <p>Browse entries like a public exhibition feed.</p>
+          </div>
+          <span class="badge" id="galleryBadge">Loading…</span>
+        </div>
+        <div class="filters">
+          <input id="search" type="search" placeholder="Search titles, students, concepts..." />
+          <select id="categoryFilter">
+            <option>All</option>
+            <option>Traditional Visual Art</option>
+            <option>Digital Art</option>
+            <option>Photography / Collage</option>
+            <option>Literary Expression</option>
+          </select>
+          <button class="btn btn-secondary" onclick="loadSheet()">↻ Refresh</button>
+        </div>
+        <div id="galleryGrid" class="gallery"></div>
+      </div>
+
+      <aside class="sidecol">
+        <div class="mini-panel" id="featured">
+          <h3>Featured works</h3>
+          <div id="featuredList" class="mini-list"></div>
+          <p class="note">Curated featured works can be shown during the exhibition without revealing jury results.</p>
+        </div>
+
+        <div class="mini-panel" id="liked">
+          <h3>Most liked</h3>
+          <div id="likedList" class="mini-list"></div>
+          <p class="note">This section helps build anticipation while keeping juror scoring private.</p>
+        </div>
+
+        <div class="mini-panel" id="awards">
+          <h3>Awards & recognition</h3>
+          <div class="award-list">
+            <div><strong>Grand Prize</strong><span>Best overall work</span></div>
+            <div><strong>Traditional Technique</strong><span>Best classic visual work</span></div>
+            <div><strong>Digital Illustration</strong><span>Best digital visual work</span></div>
+            <div><strong>Photography</strong><span>Best photo / collage</span></div>
+            <div><strong>Creative Expression</strong><span>Best literary work</span></div>
+            <div><strong>Popularity Award</strong><span>Audience vote</span></div>
+          </div>
+        </div>
+
+        <div class="mini-panel" id="partners">
+          <h3>Partners</h3>
+          <p>Supported by collaborators who invest in student creativity and professional growth.</p>
+        </div>
+
+        <div class="mini-panel" id="team">
+          <h3>Organizing team</h3>
+          <ul>
+            <li>Project Manager</li>
+            <li>Partnerships & Communication</li>
+            <li>Operations</li>
+            <li>Web Development</li>
+          </ul>
+        </div>
+
+        <div class="mini-panel" id="jury">
+          <h3>Jury evaluation</h3>
+          <div class="criteria"><span>Originality</span><b>30%</b></div>
+          <div class="criteria"><span>Conceptual coherence</span><b>25%</b></div>
+          <div class="criteria"><span>Technical quality</span><b>25%</b></div>
+          <div class="criteria"><span>Impact and relevance</span><b>20%</b></div>
+          <p class="note">Jury decisions are final and scores are entered independently.</p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="rules-row" id="rules">
+      <div class="panel rules-panel">
+        <div class="panel-head" id="documents">
+          <div>
+            <h2>Submission rules & documents</h2>
+            <p>Everything jurors and participants need in one place.</p>
+          </div>
+        </div>
+
+        <div class="rules-grid">
+          <div><strong>Original work only</strong><span>No plagiarism or unauthorized reuse</span></div>
+          <div><strong>Max two submissions</strong><span>One student, up to two works</span></div>
+          <div><strong>Anonymous writing</strong><span>For fair literary evaluation</span></div>
+          <div><strong>Technical quality</strong><span>300 dpi for digital works</span></div>
+        </div>
+
+        <div class="documents">
+          <a class="doc-link" href="docs/UNLV_Official_Regulations_FORMATTED.docx" download>Download rules document</a>
+          <a class="doc-link" href="docs/UNLV_Jury_Guide_FORMATTED.docx" download>Download jury guide</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
