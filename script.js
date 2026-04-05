@@ -124,7 +124,10 @@ function render(items) {
     return;
   }
 
-  galleryGrid.innerHTML = items.map(item => `
+  const liked = getLiked();
+  galleryGrid.innerHTML = items.map(item => {
+    const alreadyLiked = liked.includes(item.title);
+    return `
     <article class="gallery-item">
       ${item.imageUrl ? `<div class="gallery-img"><img src="${escHtml(driveUrl(item.imageUrl))}" alt="${escHtml(item.title)}" loading="lazy" onerror="this.parentElement.style.display='none'"></div>` : ''}
       <div class="head">
@@ -139,12 +142,14 @@ function render(items) {
       <p>${escHtml(item.description)}</p>
       <div class="footer">
         ${item.timestamp ? `<span>Submitted ${formatDate(item.timestamp)}</span>` : '<span></span>'}
-        <button class="like-btn" onclick="likeWork(this, '${escHtml(item.title).replace(/'/g, "\\'")}')">
+        <button class="like-btn ${alreadyLiked ? 'liked' : ''}" 
+          ${alreadyLiked ? 'disabled title="You already liked this"' : ''}
+          onclick="likeWork(this, '${escHtml(item.title).replace(/'/g, "\\'")}')">
           ❤️ <span class="like-count">${likesMap[item.title] || 0}</span>
         </button>
       </div>
-    </article>
-  `).join('');
+    </article>`;
+  }).join('');
 }
 
 // ============================================================
@@ -213,7 +218,20 @@ function formatDate(ts) {
 // ============================================================
 //  LIKES
 // ============================================================
+function getLiked() {
+  try { return JSON.parse(localStorage.getItem('likedWorks') || '[]'); }
+  catch { return []; }
+}
+
+function saveLiked(liked) {
+  try { localStorage.setItem('likedWorks', JSON.stringify(liked)); }
+  catch {}
+}
+
 async function likeWork(btn, title) {
+  const liked = getLiked();
+  if (liked.includes(title)) return; // already liked
+
   btn.disabled = true;
   btn.style.opacity = '0.6';
   try {
@@ -223,12 +241,15 @@ async function likeWork(btn, title) {
       likesMap[title] = data.likes;
       btn.querySelector('.like-count').textContent = data.likes;
       btn.classList.add('liked');
+      btn.title = 'You already liked this';
+      liked.push(title);
+      saveLiked(liked);
     }
   } catch (err) {
     console.error('Like error:', err);
+    btn.disabled = false;
+    btn.style.opacity = '1';
   }
-  btn.disabled = false;
-  btn.style.opacity = '1';
 }
 
 // ============================================================
