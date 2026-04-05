@@ -3,6 +3,7 @@
 // ============================================================
 const SHEET_ID = '1CTXoFgH1b77PzIj4qog5-T0R5C0sNLTENA4WJUxfpGs';
 const SHEET_CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Form+Responses+1`;
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzOEJARetDed_hlfS9W8vT5QUd5p2O6vz2xYyrWuiWVZzqFeNJt4deZGoGD2nQAmGEP9w/exec';
 
 // ============================================================
 //  COLUMN MAP — adjust numbers to match your Sheet column order
@@ -26,6 +27,7 @@ const COL = {
 //  STATE
 // ============================================================
 let allSubmissions = [];
+let likesMap = {}; // { "Artwork Title": likeCount }
 
 const galleryGrid    = document.getElementById('galleryGrid');
 const searchInput    = document.getElementById('search');
@@ -43,9 +45,15 @@ async function loadSheet() {
   if (galleryBadge) galleryBadge.textContent = 'Loading…';
 
   try {
-    const res = await fetch(SHEET_CSV_URL);
+    const [res, likesRes] = await Promise.all([
+      fetch(SHEET_CSV_URL),
+      fetch(`${APPS_SCRIPT_URL}?action=getLikes`).catch(() => null)
+    ]);
     if (!res.ok) throw new Error('Network error');
     const csv = await res.text();
+    if (likesRes && likesRes.ok) {
+      likesMap = await likesRes.json();
+    }
     allSubmissions = parseCSV(csv);
 
     const count = allSubmissions.length;
@@ -129,7 +137,12 @@ function render(items) {
         </div>
       </div>
       <p>${escHtml(item.description)}</p>
-      ${item.timestamp ? `<div class="footer"><span>Submitted ${formatDate(item.timestamp)}</span></div>` : ''}
+      <div class="footer">
+        ${item.timestamp ? `<span>Submitted ${formatDate(item.timestamp)}</span>` : '<span></span>'}
+        <button class="like-btn" onclick="likeWork(this, '${escHtml(item.title).replace(/'/g, "\\'")}')">
+          ❤️ <span class="like-count">${likesMap[item.title] || 0}</span>
+        </button>
+      </div>
     </article>
   `).join('');
 }
@@ -195,6 +208,27 @@ function escHtml(str) {
 function formatDate(ts) {
   try { return new Date(ts).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }); }
   catch { return ts; }
+}
+
+// ============================================================
+//  LIKES
+// ============================================================
+async function likeWork(btn, title) {
+  btn.disabled = true;
+  btn.style.opacity = '0.6';
+  try {
+    const res = await fetch(`${APPS_SCRIPT_URL}?action=like&title=${encodeURIComponent(title)}`);
+    const data = await res.json();
+    if (data.success) {
+      likesMap[title] = data.likes;
+      btn.querySelector('.like-count').textContent = data.likes;
+      btn.classList.add('liked');
+    }
+  } catch (err) {
+    console.error('Like error:', err);
+  }
+  btn.disabled = false;
+  btn.style.opacity = '1';
 }
 
 // ============================================================
