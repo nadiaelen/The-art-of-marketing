@@ -2,7 +2,7 @@
 //  CONFIGURATION
 // ============================================================
 const SHEET_ID = '1CTXoFgH1b77PzIj4qog5-T0R5C0sNLTENA4WJUxfpGs';
-const SHEET_CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=0`;
+const SHEET_CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Form+Responses+1`;
 
 // ============================================================
 //  COLUMN MAP — adjust numbers to match your Sheet column order
