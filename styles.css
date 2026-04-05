@@ -4,3 +4,15 @@
 
 /* ── Like button ── */
 .like-btn{background:none;border:1px solid var(--border);border-radius:999px;padding:7px 14px;cursor:pointer;font-size:13px;font-weight:700;color:#888;display:inline-flex;align-items:center;gap:6px;transition:all .2s}.like-btn:hover{border-color:var(--scarlet);color:var(--scarlet)}.like-btn.liked{background:rgba(207,10,44,.08);border-color:var(--scarlet);color:var(--scarlet)}.gallery-item .footer{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
+
+/* ── Deadline panel ── */
+.deadline-panel{padding:0;overflow:hidden;border:none;background:transparent;box-shadow:none}
+.deadline-inner{background:linear-gradient(135deg,#c8a97e,#b8895a,#a0673a);border-radius:22px;padding:28px 24px;text-align:center;position:relative;border:2px solid #d4aa80;animation:deadlinePulse 2.5s ease-in-out infinite}
+@keyframes deadlinePulse{0%,100%{box-shadow:0 0 0 0 rgba(200,140,80,.5),0 8px 30px rgba(160,100,50,.3)}50%{box-shadow:0 0 0 10px rgba(200,140,80,0),0 8px 30px rgba(160,100,50,.5)}}
+.deadline-label{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:10px}
+.deadline-date{font-size:42px;font-weight:800;color:#fff;letter-spacing:-.02em;line-height:1;text-shadow:0 2px 12px rgba(0,0,0,.2)}
+.deadline-sub{font-size:13px;color:rgba(255,255,255,.7);margin-top:6px;font-weight:500}
+.deadline-counter{margin-top:16px;display:flex;justify-content:center;gap:10px}
+.deadline-counter .dc-unit{background:rgba(0,0,0,.2);border-radius:10px;padding:8px 10px;min-width:52px}
+.deadline-counter .dc-num{display:block;font-size:20px;font-weight:800;color:#fff;line-height:1}
+.deadline-counter .dc-label{display:block;font-size:10px;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}

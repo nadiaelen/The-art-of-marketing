@@ -253,6 +253,32 @@ async function likeWork(btn, title) {
 }
 
 // ============================================================
+//  DEADLINE COUNTDOWN
+// ============================================================
+function updateCountdown() {
+  const counter = document.getElementById('deadlineCounter');
+  if (!counter) return;
+  const deadline = new Date('2025-04-30T23:59:00');
+  const now = new Date();
+  const diff = deadline - now;
+  if (diff <= 0) {
+    counter.innerHTML = '<div class="dc-unit"><span class="dc-num">—</span><span class="dc-label">Closed</span></div>';
+    return;
+  }
+  const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const mins  = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const secs  = Math.floor((diff % (1000 * 60)) / 1000);
+  counter.innerHTML = `
+    <div class="dc-unit"><span class="dc-num">${days}</span><span class="dc-label">Days</span></div>
+    <div class="dc-unit"><span class="dc-num">${String(hours).padStart(2,'0')}</span><span class="dc-label">Hrs</span></div>
+    <div class="dc-unit"><span class="dc-num">${String(mins).padStart(2,'0')}</span><span class="dc-label">Min</span></div>
+    <div class="dc-unit"><span class="dc-num">${String(secs).padStart(2,'0')}</span><span class="dc-label">Sec</span></div>`;
+}
+
+// ============================================================
 //  INIT
 // ============================================================
 loadSheet();
+updateCountdown();
+setInterval(updateCountdown, 1000);
