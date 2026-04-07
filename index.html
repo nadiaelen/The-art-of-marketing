@@ -3,60 +3,62 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>UNLV Marketing Creative Exhibition</title>
-  <meta name="description" content="UNLV Marketing Creative Exhibition submission hub" />
+  <title>The Art of Marketing — UNLV</title>
+  <meta name="description" content="UNLV Marketing Creative Exhibition — First Edition Digital Showcase" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+
   <header class="topbar">
     <div class="brand">
       <div class="logo">U</div>
       <div>
-        <div class="brand-title">UNLV Marketing Creative Exhibition</div>
-        <div class="brand-subtitle">Lee Business School · Marketing and International Business</div>
+        <div class="brand-title">The Art of Marketing</div>
+        <div class="brand-subtitle">UNLV · Lee Business School · First Edition</div>
       </div>
     </div>
     <nav class="nav">
-      <a href="#gallery">Gallery</a>
+      <a href="#gallery-feed">Gallery</a>
       <a href="#featured">Featured</a>
-      <a href="#liked">Most liked</a>
+      <a href="#liked">Most Liked</a>
       <a href="#awards">Awards</a>
       <a href="#jury">Jury</a>
       <a href="#rules">Rules</a>
-      <a href="#documents">Documents</a>
     </nav>
-    <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdo7EoAzDfIxP4ctCnspSz_6W6DMtB1YJU7FF7h031DH9hiWA/viewform?usp=header" target="_blank" rel="noopener">Submit work</a>
+    <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdo7EoAzDfIxP4ctCnspSz_6W6DMtB1YJU7FF7h031DH9hiWA/viewform?usp=header" target="_blank" rel="noopener">Submit Work</a>
   </header>
 
   <main>
+
+    <!-- ═══ HERO ═══ -->
     <section class="hero">
       <div class="hero-copy">
-        <div class="hero-intro">
-          <div class="pill">UNLV · Lee Business School</div>
-        </div>
+        <div class="pill">UNLV · Lee Business School · 2025</div>
 
         <div class="hero-title-block">
           <div class="hero-title-the">The Art of</div>
           <div class="hero-title-marketing">Marketing</div>
-          <div class="hero-title-sub">— A Digital Student Showcase —</div>
+          <div class="hero-title-sub">— First Edition Digital Student Showcase —</div>
         </div>
 
         <p class="hero-tagline">Create. <em>Express.</em> Show Your Work.</p>
 
-        <p class="supporting-copy">
-          Welcome to the <strong>first edition</strong> of the UNLV Marketing Creative Exhibition — a digital showcase where creativity meets strategy. Marketing isn't just numbers and campaigns — it's storytelling, design, and artistic vision. All UNLV students are invited to share how <strong>you</strong> see marketing as an art form.
+        <p class="hero-desc">
+          Welcome to the <strong>first edition</strong> of the UNLV Marketing Creative Exhibition.
+          Marketing isn't just numbers and campaigns — it's storytelling, design, and artistic vision.
+          All UNLV students are invited to share how <strong>you</strong> see marketing as an art form.
         </p>
 
         <div class="actions">
-          <a class="btn btn-primary" href="#gallery-feed">Explore gallery</a>
-          <a class="btn btn-secondary" href="https://docs.google.com/forms/d/e/1FAIpQLSdo7EoAzDfIxP4ctCnspSz_6W6DMtB1YJU7FF7h031DH9hiWA/viewform?usp=header" target="_blank" rel="noopener">Submit a work</a>
+          <a class="btn btn-primary" href="#gallery-feed">Explore Gallery</a>
+          <a class="btn btn-secondary" href="https://docs.google.com/forms/d/e/1FAIpQLSdo7EoAzDfIxP4ctCnspSz_6W6DMtB1YJU7FF7h031DH9hiWA/viewform?usp=header" target="_blank" rel="noopener">Submit a Work</a>
         </div>
 
         <div class="stats">
-          <div><span>Works submitted</span><strong id="statCount">–</strong></div>
+          <div><span>Works Submitted</span><strong id="statCount">–</strong></div>
           <div><span>Categories</span><strong>4</strong></div>
           <div><span>Jurors</span><strong>4</strong></div>
           <div><span>Awards</span><strong>6</strong></div>
@@ -64,12 +66,9 @@
       </div>
 
       <aside class="hero-panel">
-        <div class="hero-panel-card about-card">
-          <h2>About the exhibition</h2>
-          <p>
-            At UNLV Lee Business School, marketing is both strategy and creativity. This exhibition gives students a place
-            to build portfolios, tell brand stories, test visual ideas, and present work with professional polish.
-          </p>
+        <div class="hero-about">
+          <h2>About the Exhibition</h2>
+          <p>At UNLV Lee Business School, marketing is both strategy and creativity. This exhibition gives students a platform to build portfolios, tell brand stories, test visual ideas, and present work with professional polish.</p>
           <ul>
             <li>Strengthen your portfolio</li>
             <li>Show your creative voice</li>
@@ -77,51 +76,45 @@
             <li>Gain public exposure and feedback</li>
           </ul>
         </div>
-        <div class="hero-panel-card soft">
-          <h3>Exhibition values</h3>
-          <ul>
-            <li>Creativity</li>
-            <li>Excellence</li>
-            <li>Authenticity</li>
-            <li>Artistic expression</li>
-          </ul>
-        </div>
       </aside>
     </section>
 
+    <!-- ═══ CATEGORY CARDS ═══ -->
     <section class="card-grid" id="gallery">
       <article class="category-card">
-        <div class="category-icon">01</div>
+        <div class="cat-num">01</div>
         <h3>Traditional Visual Work</h3>
-        <p>Painting, Drawing, Sculpture, and other traditional forms.</p>
+        <p>Painting, Drawing, Sculpture, and traditional forms.</p>
         <a href="#gallery-feed">Explore →</a>
       </article>
       <article class="category-card">
-        <div class="category-icon">02</div>
+        <div class="cat-num">02</div>
         <h3>Digital Visual Work</h3>
         <p>Graphic Design, Digital Painting, 3D Art, and more.</p>
         <a href="#gallery-feed">Explore →</a>
       </article>
       <article class="category-card">
-        <div class="category-icon">03</div>
+        <div class="cat-num">03</div>
         <h3>Photography / Collage</h3>
         <p>Film, Digital Photography, Mixed-Media Collage.</p>
         <a href="#gallery-feed">Explore →</a>
       </article>
       <article class="category-card">
-        <div class="category-icon">04</div>
+        <div class="cat-num">04</div>
         <h3>Literary Work</h3>
-        <p>Poetry, Short Story, Script, and other literary forms.</p>
+        <p>Poetry, Short Story, Script, and literary forms.</p>
         <a href="#gallery-feed">Explore →</a>
       </article>
     </section>
 
+    <!-- ═══ GALLERY + SIDEBAR ═══ -->
     <section class="content-grid" id="gallery-feed">
+
       <div class="panel">
         <div class="panel-head">
           <div>
-            <h2>Gallery of works</h2>
-            <p>Browse entries like a public exhibition feed.</p>
+            <h2>Gallery of Works</h2>
+            <p>Browse and search all submissions.</p>
           </div>
           <span class="badge" id="galleryBadge">Loading…</span>
         </div>
@@ -140,27 +133,30 @@
       </div>
 
       <aside class="sidecol">
-        <div class="mini-panel deadline-panel">
-          <div class="deadline-inner">
-            <div class="deadline-label">⏳ Submission Deadline</div>
-            <div class="deadline-date">April 30</div>
-            <div class="deadline-sub">2025 · 11:59 PM</div>
-            <div class="deadline-counter" id="deadlineCounter"></div>
-          </div>
+
+        <!-- DEADLINE -->
+        <div class="deadline-panel">
+          <div class="deadline-label">⏳ Submission Deadline</div>
+          <div class="deadline-date">April 30</div>
+          <div class="deadline-sub">2025 · 11:59 PM</div>
+          <div class="deadline-counter" id="deadlineCounter"></div>
         </div>
 
+        <!-- FEATURED -->
         <div class="mini-panel" id="featured">
-          <h3>Featured works</h3>
+          <h3>⭐ Featured Works</h3>
           <div id="featuredList" class="mini-list"></div>
         </div>
 
+        <!-- MOST LIKED -->
         <div class="mini-panel" id="liked">
-          <h3>Most liked</h3>
+          <h3>❤️ Most Liked</h3>
           <div id="likedList" class="mini-list"></div>
         </div>
 
+        <!-- AWARDS -->
         <div class="mini-panel" id="awards">
-          <h3>Awards & recognition</h3>
+          <h3>🏆 Awards & Recognition</h3>
           <div class="award-list">
             <div><strong>Grand Prize</strong><span>Best overall work</span></div>
             <div><strong>Traditional Technique</strong><span>Best classic visual work</span></div>
@@ -171,8 +167,19 @@
           </div>
         </div>
 
+        <!-- JURY -->
+        <div class="mini-panel" id="jury">
+          <h3>⚖️ Jury Evaluation</h3>
+          <div class="criteria"><span>Originality</span><b>30%</b></div>
+          <div class="criteria"><span>Conceptual Coherence</span><b>25%</b></div>
+          <div class="criteria"><span>Technical Quality</span><b>25%</b></div>
+          <div class="criteria"><span>Impact & Relevance</span><b>20%</b></div>
+          <p class="note">Jury decisions are final and evaluations are completed independently.</p>
+        </div>
+
+        <!-- PARTNERS -->
         <div class="mini-panel" id="partners">
-          <h3>Partners</h3>
+          <h3>🤝 Partners</h3>
           <div class="partner-list">
             <a class="partner-item" href="https://www.unlv.edu/business" target="_blank" rel="noopener">
               <div class="partner-icon">🎓</div>
@@ -191,10 +198,10 @@
           </div>
         </div>
 
+        <!-- CONTACT -->
         <div class="mini-panel" id="team">
-          <h3>Contact</h3>
+          <h3>✉️ Contact</h3>
           <div class="contact-block">
-            <div class="contact-icon">✉️</div>
             <div>
               <strong>UNLV Marketing Creative Exhibition</strong>
               <a class="contact-email" href="mailto:mib@unlv.edu">mib@unlv.edu</a>
@@ -202,65 +209,44 @@
           </div>
         </div>
 
-        <div class="mini-panel" id="jury">
-          <h3>Jury evaluation</h3>
-          <div class="criteria"><span>Originality</span><b>30%</b></div>
-          <div class="criteria"><span>Conceptual coherence</span><b>25%</b></div>
-          <div class="criteria"><span>Technical quality</span><b>25%</b></div>
-          <div class="criteria"><span>Impact and relevance</span><b>20%</b></div>
-          <p class="note">Jury decisions are final and scores are entered independently.</p>
-        </div>
       </aside>
     </section>
 
+    <!-- ═══ RULES ═══ -->
     <section class="rules-row" id="rules">
       <div class="panel rules-panel">
         <div class="panel-head" id="documents">
           <div>
-            <h2>Submission rules & documents</h2>
-            <p>Everything jurors and participants need in one place.</p>
+            <h2>Submission Rules & Documents</h2>
+            <p>Everything participants and jurors need in one place.</p>
           </div>
         </div>
-
         <div class="rules-grid">
           <div class="rule-item">
             <div class="rule-icon">✦</div>
-            <div>
-              <strong>Original work only</strong>
-              <span>No plagiarism or unauthorized reuse of others' work</span>
-            </div>
+            <div><strong>Original work only</strong><span>No plagiarism or unauthorized reuse of others' work</span></div>
           </div>
           <div class="rule-item">
             <div class="rule-icon">✦</div>
-            <div>
-              <strong>Max two submissions</strong>
-              <span>One student may submit up to two works</span>
-            </div>
+            <div><strong>Max two submissions</strong><span>One student may submit up to two works</span></div>
           </div>
           <div class="rule-item">
             <div class="rule-icon">✦</div>
-            <div>
-              <strong>Technical quality</strong>
-              <span>Minimum 300 dpi resolution for all digital works</span>
-            </div>
+            <div><strong>Technical quality</strong><span>Minimum 300 dpi resolution for all digital works</span></div>
           </div>
           <div class="rule-item">
             <div class="rule-icon">✦</div>
-            <div>
-              <strong>UNLV students only</strong>
-              <span>Open to all majors across all UNLV colleges</span>
-            </div>
+            <div><strong>UNLV students only</strong><span>Open to all majors across all UNLV colleges</span></div>
           </div>
         </div>
-
         <div class="documents">
-          <a class="doc-link" href="docs/UNLV_Official_Regulations_FORMATTED.docx" download>⬇ Download rules document</a>
-          <a class="doc-link" href="docs/UNLV_Jury_Guide_FORMATTED.docx" download>⬇ Download jury guide</a>
+          <a class="doc-link" href="docs/UNLV_Official_Regulations_FORMATTED.docx" download>⬇ Download Rules Document</a>
+          <a class="doc-link" href="docs/UNLV_Jury_Guide_FORMATTED.docx" download>⬇ Download Jury Guide</a>
         </div>
       </div>
     </section>
-  </main>
 
+  </main>
   <script src="script.js"></script>
 </body>
 </html>
