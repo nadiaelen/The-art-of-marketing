@@ -38,3 +38,33 @@
 .hero-tagline em{color:var(--scarlet);font-style:italic}
 .supporting-copy{color:#c8c8c8 !important;font-size:15px;line-height:1.8;max-width:520px;margin-bottom:8px}
 .supporting-copy strong{color:#fff}
+
+/* ── Font size fixes ── */
+.hero-title-the{font-size:clamp(2.8rem,6vw,5rem) !important}
+.hero-title-marketing{font-size:clamp(5rem,12vw,10rem) !important}
+.hero-title-sub{font-size:clamp(1rem,1.8vw,1.4rem) !important}
+.hero-tagline{font-size:clamp(1.6rem,3.5vw,2.6rem) !important}
+.supporting-copy{font-size:17px !important;color:#d8d8d8 !important}
+
+/* ── Partner tile bigger text ── */
+.partner-item strong{font-size:15px !important}
+.partner-item span{font-size:13px !important;line-height:1.6}
+.partner-icon{font-size:28px !important}
+
+/* ── Rules tile bigger text ── */
+.rule-item strong{font-size:15px !important}
+.rule-item span{font-size:13px !important;line-height:1.6}
+.rule-icon{font-size:20px !important}
+.rules-panel .panel-head h2{font-size:22px}
+.rules-panel .panel-head p{font-size:15px}
+.doc-link{font-size:15px !important;padding:14px 24px !important}
+
+/* ── Sidebar panels bigger text ── */
+.mini-panel h3{font-size:17px !important}
+.mini-panel p, .mini-panel li{font-size:14px !important}
+.award-list strong{font-size:14px !important}
+.award-list span{font-size:13px !important}
+.criteria span{font-size:14px !important}
+.criteria b{font-size:14px !important}
+.contact-block strong{font-size:15px !important}
+.contact-email{font-size:16px !important}
