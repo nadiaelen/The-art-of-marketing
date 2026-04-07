@@ -163,10 +163,20 @@ function populateFeatured() {
 
 function populateLiked() {
   if (!likedList) return;
-  const items = allSubmissions.slice(-3).reverse();
-  likedList.innerHTML = items.length
-    ? items.map(item => `<div class="mini-item"><strong>${escHtml(item.title)}</strong><span>${escHtml(item.student)}</span></div>`).join('')
-    : '<p class="note">No submissions yet.</p>';
+  // Sort all submissions by like count descending, take top 5
+  const sorted = [...allSubmissions]
+    .map(item => ({ ...item, likes: likesMap[item.title] || 0 }))
+    .filter(item => item.likes > 0)
+    .sort((a, b) => b.likes - a.likes)
+    .slice(0, 5);
+
+  likedList.innerHTML = sorted.length
+    ? sorted.map(item => `
+        <div class="mini-item">
+          <strong>${escHtml(item.title)}</strong>
+          <span>${escHtml(item.student)} · ❤️ ${item.likes} like${item.likes !== 1 ? 's' : ''}</span>
+        </div>`).join('')
+    : '<p class="note">No likes yet — be the first to vote!</p>';
 }
 
 // ============================================================
