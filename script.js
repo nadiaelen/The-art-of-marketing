@@ -265,7 +265,7 @@ function updateCountdown() {
   const counter = document.getElementById('deadlineCounter');
   const panel   = document.querySelector('.deadline-inner');
   if (!counter) return;
-  const deadline = new Date('2025-04-30T23:59:00');
+  const deadline = new Date('2026-04-30T23:59:00');
   const now = new Date();
   const diff = deadline - now;
 
