@@ -130,19 +130,15 @@ function render(items) {
     return `
     <article class="gallery-item">
       ${item.imageUrl ? `<div class="gallery-img"><img src="${escHtml(driveUrl(item.imageUrl))}" alt="${escHtml(item.title)}" loading="lazy" onerror="this.parentElement.style.display='none'"></div>` : ''}
-      <div class="head">
-        <div>
-          <div class="tags">
-            <span class="tag">${escHtml(item.category)}</span>
-          </div>
-          <h3>${escHtml(item.title)}</h3>
-          <p>${escHtml(item.student)}${item.major ? ' • ' + escHtml(item.major) : ''}</p>
-        </div>
+      <div class="tags">
+        <span class="tag">${escHtml(item.category.split('(')[0].trim())}</span>
       </div>
-      <p>${escHtml(item.description)}</p>
+      <h3>${escHtml(item.title)}</h3>
+      <p class="student">${escHtml(item.student)}${item.major ? ' · ' + escHtml(item.major) : ''}</p>
+      <p class="desc">${escHtml(item.description)}</p>
       <div class="footer">
         ${item.timestamp ? `<span>Submitted ${formatDate(item.timestamp)}</span>` : '<span></span>'}
-        <button class="like-btn ${alreadyLiked ? 'liked' : ''}" 
+        <button class="like-btn ${alreadyLiked ? 'liked' : ''}"
           ${alreadyLiked ? 'disabled title="You already liked this"' : ''}
           onclick="likeWork(this, '${escHtml(item.title).replace(/'/g, "\\'")}')">
           ❤️ <span class="like-count">${likesMap[item.title] || 0}</span>
@@ -257,14 +253,34 @@ async function likeWork(btn, title) {
 // ============================================================
 function updateCountdown() {
   const counter = document.getElementById('deadlineCounter');
+  const panel   = document.querySelector('.deadline-inner');
   if (!counter) return;
   const deadline = new Date('2025-04-30T23:59:00');
   const now = new Date();
   const diff = deadline - now;
+
   if (diff <= 0) {
-    counter.innerHTML = '<div class="dc-unit"><span class="dc-num">—</span><span class="dc-label">Closed</span></div>';
+    // Submissions closed — update panel and disable all submit buttons
+    if (panel) {
+      panel.style.background = 'linear-gradient(135deg,#555,#333)';
+      panel.style.borderColor = '#666';
+      panel.style.animation = 'none';
+    }
+    const dateEl = document.querySelector('.deadline-date');
+    const subEl  = document.querySelector('.deadline-sub');
+    if (dateEl) dateEl.textContent = 'Closed';
+    if (subEl)  subEl.textContent  = 'Submissions are no longer accepted';
+    counter.innerHTML = '';
+
+    // Disable all submit buttons
+    document.querySelectorAll('a[href*="viewform"]').forEach(btn => {
+      btn.style.pointerEvents = 'none';
+      btn.style.opacity = '0.4';
+      btn.title = 'Submissions are closed';
+    });
     return;
   }
+
   const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
   const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const mins  = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
@@ -274,6 +290,15 @@ function updateCountdown() {
     <div class="dc-unit"><span class="dc-num">${String(hours).padStart(2,'0')}</span><span class="dc-label">Hrs</span></div>
     <div class="dc-unit"><span class="dc-num">${String(mins).padStart(2,'0')}</span><span class="dc-label">Min</span></div>
     <div class="dc-unit"><span class="dc-num">${String(secs).padStart(2,'0')}</span><span class="dc-label">Sec</span></div>`;
+}
+
+function filterCategory(cat) {
+  const select = document.getElementById('categoryFilter');
+  if (select) {
+    select.value = cat;
+    applyFilters();
+  }
+  document.getElementById('gallery-feed')?.scrollIntoView({ behavior: 'smooth' });
 }
 
 // ============================================================
