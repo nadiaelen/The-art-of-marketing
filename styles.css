@@ -402,3 +402,34 @@ input[type="search"]:focus, select:focus { border-color: var(--scarlet-muted); }
   .stats-row { flex-direction: column; gap: 16px; padding: 24px; }
   .stat-divider { width: 40px; height: 1px; }
 }
+
+/* ── Typographic icon replacements ── */
+.about-icon {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 36px !important;
+  font-weight: 700 !important;
+  color: var(--scarlet) !important;
+  margin-bottom: 16px !important;
+  line-height: 1 !important;
+  font-style: italic;
+}
+.award-icon-circle {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff;
+  width: 68px; height: 68px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--scarlet-muted), var(--scarlet-deep));
+  display: grid; place-items: center;
+  margin: 0 auto 20px;
+  box-shadow: 0 8px 24px rgba(122,16,16,.3);
+}
+.award-icon-sm {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  color: var(--scarlet) !important;
+  margin-bottom: 12px !important;
+  font-style: italic;
+  line-height: 1;
+}

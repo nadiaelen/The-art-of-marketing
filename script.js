@@ -141,7 +141,7 @@ function render(items) {
         <button class="like-btn ${alreadyLiked ? 'liked' : ''}"
           ${alreadyLiked ? 'disabled title="You already liked this"' : ''}
           onclick="likeWork(this, '${escHtml(item.title).replace(/'/g, "\\'")}')">
-          ❤️ <span class="like-count">${likesMap[item.title] || 0}</span>
+          ♡ <span class="like-count">${likesMap[item.title] || 0}</span>
         </button>
       </div>
     </article>`;
@@ -174,7 +174,7 @@ function populateLiked() {
     ? sorted.map(item => `
         <div class="mini-item">
           <strong>${escHtml(item.title)}</strong>
-          <span>${escHtml(item.student)} · ❤️ ${item.likes} like${item.likes !== 1 ? 's' : ''}</span>
+          <span>${escHtml(item.student)} · ${item.likes} like${item.likes !== 1 ? 's' : ''}</span>
         </div>`).join('')
     : '<p class="note">No likes yet — be the first to vote!</p>';
 }
