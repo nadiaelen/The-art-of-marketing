@@ -75,49 +75,61 @@ async function loadSheet() {
 }
 
 // ============================================================
-//  CSV PARSER
+//  CSV PARSER — handles multi-line quoted fields
 // ============================================================
 function parseCSV(csv) {
-  const lines = csv.trim().split('\n');
-  if (lines.length < 2) return [];
-
-  return lines.slice(1)
-    .map(line => splitCSVLine(line))
-    .filter(row => row.length > COL.title && row[COL.title]?.trim())
-    .map(row => ({
-      timestamp:   row[COL.timestamp]   || '',
-      title:       row[COL.title]        || 'Untitled',
-      student:     row[COL.student]      || 'Anonymous',
-      major:       row[COL.major]        || '',
-      category:    row[COL.category]     || 'Uncategorized',
-      description: row[COL.description]  || '',
-      imageUrl:    row[COL.imageUrl]     || '',
-    }));
-}
-
-function splitCSVLine(line) {
-  const result = [];
+  const rows = [];
+  let row = [];
   let current = '';
   let inQuotes = false;
-  for (let i = 0; i < line.length; i++) {
-    const char = line[i];
+
+  for (let i = 0; i < csv.length; i++) {
+    const char = csv[i];
+    const next = csv[i + 1];
+
     if (char === '"') {
-      if (inQuotes && line[i + 1] === '"') { current += '"'; i++; }
+      if (inQuotes && next === '"') { current += '"'; i++; }
       else inQuotes = !inQuotes;
     } else if (char === ',' && !inQuotes) {
-      result.push(current.trim());
+      row.push(current.trim());
+      current = '';
+    } else if ((char === '\n' || (char === '\r' && next === '\n')) && !inQuotes) {
+      if (char === '\r') i++;
+      row.push(current.trim());
+      if (row.some(cell => cell)) rows.push(row);
+      row = [];
       current = '';
     } else {
       current += char;
     }
   }
-  result.push(current.trim());
-  return result;
+  // last row
+  row.push(current.trim());
+  if (row.some(cell => cell)) rows.push(row);
+
+  if (rows.length < 2) return [];
+
+  return rows.slice(1)
+    .filter(r => r.length > COL.title && r[COL.title]?.trim())
+    .map(r => ({
+      timestamp:   r[COL.timestamp]   || '',
+      student:     r[COL.student]     || 'Anonymous',
+      major:       r[COL.major]       || '',
+      title:       r[COL.title]       || 'Untitled',
+      category:    r[COL.category]    || 'Uncategorized',
+      description: r[COL.description] || '',
+      imageUrl:    r[COL.imageUrl]    || '',
+    }));
 }
 
 // ============================================================
 //  RENDER GALLERY
 // ============================================================
+function truncate(str, max) {
+  if (!str) return '';
+  return str.length > max ? str.slice(0, max).trimEnd() + '…' : str;
+}
+
 function render(items) {
   if (items.length === 0) {
     galleryGrid.innerHTML = '<p class="empty-msg">No submissions match your search.</p>';
@@ -127,15 +139,17 @@ function render(items) {
   const liked = getLiked();
   galleryGrid.innerHTML = items.map(item => {
     const alreadyLiked = liked.includes(item.title);
+    const safeDesc  = escHtml(truncate(item.description, 300));
+    const safeTitle = escHtml(truncate(item.title, 80));
     return `
     <article class="gallery-item">
-      ${item.imageUrl ? `<div class="gallery-img"><img src="${escHtml(driveUrl(item.imageUrl))}" alt="${escHtml(item.title)}" loading="lazy" onerror="this.parentElement.style.display='none'"></div>` : ''}
+      ${item.imageUrl ? `<div class="gallery-img"><img src="${escHtml(driveUrl(item.imageUrl))}" alt="${safeTitle}" loading="lazy" onerror="this.parentElement.style.display='none'"></div>` : ''}
       <div class="tags">
         <span class="tag">${escHtml(item.category.split('(')[0].trim())}</span>
       </div>
-      <h3>${escHtml(item.title)}</h3>
+      <h3>${safeTitle}</h3>
       <p class="student">${escHtml(item.student)}${item.major ? ' · ' + escHtml(item.major) : ''}</p>
-      <p class="desc">${escHtml(item.description)}</p>
+      <p class="desc">${safeDesc}</p>
       <div class="footer">
         ${item.timestamp ? `<span>Submitted ${formatDate(item.timestamp)}</span>` : '<span></span>'}
         <button class="like-btn ${alreadyLiked ? 'liked' : ''}"
