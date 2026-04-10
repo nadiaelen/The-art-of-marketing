@@ -123,6 +123,52 @@ function parseCSV(csv) {
 }
 
 // ============================================================
+//  MODAL
+// ============================================================
+let allItems = []; // store full items for modal access
+
+function openModal(index) {
+  const item = allItems[index];
+  if (!item) return;
+
+  const modal    = document.getElementById('modal');
+  const imgWrap  = document.getElementById('modalImage');
+  const tag      = document.getElementById('modalTag');
+  const title    = document.getElementById('modalTitle');
+  const student  = document.getElementById('modalStudent');
+  const desc     = document.getElementById('modalDesc');
+  const date     = document.getElementById('modalDate');
+
+  // Image
+  if (item.imageUrl) {
+    imgWrap.innerHTML = `<img src="${escHtml(driveUrl(item.imageUrl))}" alt="${escHtml(item.title)}" onerror="this.parentElement.style.display='none'">`;
+    imgWrap.style.display = 'block';
+  } else {
+    imgWrap.innerHTML = '';
+    imgWrap.style.display = 'none';
+  }
+
+  tag.textContent     = item.category.split('(')[0].trim();
+  title.textContent   = item.title;
+  student.textContent = item.student + (item.major ? ' · ' + item.major : '');
+  desc.textContent    = item.description;
+  date.textContent    = item.timestamp ? 'Submitted ' + formatDate(item.timestamp) : '';
+
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (e && e.target !== document.getElementById('modal') && !e.target.classList.contains('modal-close')) return;
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal({ target: document.getElementById('modal') });
+});
+
+// ============================================================
 //  RENDER GALLERY
 // ============================================================
 function truncate(str, max) {
@@ -137,12 +183,13 @@ function render(items) {
   }
 
   const liked = getLiked();
-  galleryGrid.innerHTML = items.map(item => {
+  allItems = items; // store for modal access
+  galleryGrid.innerHTML = items.map((item, index) => {
     const alreadyLiked = liked.includes(item.title);
     const safeDesc  = escHtml(truncate(item.description, 300));
     const safeTitle = escHtml(truncate(item.title, 80));
     return `
-    <article class="gallery-item">
+    <article class="gallery-item" onclick="openModal(${index})">
       ${item.imageUrl ? `<div class="gallery-img"><img src="${escHtml(driveUrl(item.imageUrl))}" alt="${safeTitle}" loading="lazy" onerror="this.parentElement.style.display='none'"></div>` : ''}
       <div class="tags">
         <span class="tag">${escHtml(item.category.split('(')[0].trim())}</span>
@@ -150,7 +197,7 @@ function render(items) {
       <h3>${safeTitle}</h3>
       <p class="student">${escHtml(item.student)}${item.major ? ' · ' + escHtml(item.major) : ''}</p>
       <p class="desc">${safeDesc}</p>
-      <div class="footer">
+      <div class="footer" onclick="event.stopPropagation()">
         ${item.timestamp ? `<span>Submitted ${formatDate(item.timestamp)}</span>` : '<span></span>'}
         <button class="like-btn ${alreadyLiked ? 'liked' : ''}"
           ${alreadyLiked ? 'disabled title="You already liked this"' : ''}

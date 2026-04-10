@@ -288,6 +288,22 @@
     </section>
 
   </main>
+
+  <!-- ═══ SUBMISSION MODAL ═══ -->
+  <div id="modal" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <div id="modalImage" class="modal-img-wrap"></div>
+      <div class="modal-body">
+        <div id="modalTag" class="tag" style="margin-bottom:16px"></div>
+        <h2 id="modalTitle" class="modal-title"></h2>
+        <p id="modalStudent" class="modal-student"></p>
+        <p id="modalDesc" class="modal-desc"></p>
+        <p id="modalDate" class="modal-date"></p>
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
